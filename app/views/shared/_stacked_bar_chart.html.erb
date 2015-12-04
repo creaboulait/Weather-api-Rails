@@ -1,0 +1,38 @@
+<div id="stacked_bar_chart" style="min-width: 200px; height: 300px; margin: 0 auto"></div>
+
+<script type="text/javascript">
+$(function () {
+    $('#stacked_bar_chart').highcharts({
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: 'Stacked bar chart'
+        },
+        xAxis: {
+            categories: ['IN','UK','US','IQ','IR']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Average Current Weather by Country'
+            }
+        },
+        tooltip: {
+            valueSuffix: '°C'
+          },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: [{
+            name: 'Country',
+            data: <%= @tmp_arry %>
+        }]
+    });
+});
+</script>

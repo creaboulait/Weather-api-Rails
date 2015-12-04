@@ -1,0 +1,51 @@
+<div id="basic_column_chart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+    $('#basic_column_chart').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Basic column chart'
+        },
+        subtitle: {
+            text: 'Source: http://openweathermap.org/'
+        },
+        xAxis: {
+            categories: [
+            'IN',
+            'UK',
+            'US',
+            'IQ',
+            'IR'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Temperature (°C)'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} (°C) </b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'County',
+            data: <%= @tmp_arry %>
+        }]
+    });
+});
+</script>

@@ -1,0 +1,59 @@
+<div id="areaspline" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<script type="text/javascript">
+$(function () {
+    $('#areaspline').highcharts({
+        chart: {
+            type: 'areaspline'
+        },
+        title: {
+            text: 'Area spline chart'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'left',
+            verticalAlign: 'top',
+            x: 150,
+            y: 100,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+        },
+        xAxis: {
+            categories: [
+                'IN',
+                'UK',
+                'US',
+                'IQ',
+                'IR'
+            ],
+            plotBands: [{ // visualize the weekend
+                from: 4.5,
+                to: 6.5,
+                color: 'rgba(68, 170, 213, .2)'
+            }]
+        },
+        yAxis: {
+            title: {
+                text: 'Temperature (°C)'
+            }
+        },
+        tooltip: {
+            shared: true,
+            valueSuffix: ' °C'
+        },
+        credits: {
+            enabled: false
+        },
+        plotOptions: {
+            areaspline: {
+                fillOpacity: 0.5
+            }
+        },
+        series: [{
+            name: 'Country',
+            data: <%= @tmp_arry %>
+              }]
+    });
+});
+</script>
